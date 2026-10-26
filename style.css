@@ -1,18 +1,24 @@
+
 * {
     box-sizing: border-box;
 }
+
 body {
     font-family: Arial, sans-serif;
     background-color: #f2f2f2;
     display: flex;
     justify-content: center;
-    padding-top: 50px;
+    padding: 20px;
+    margin: 0;
+    min-height: 100vh;
 }
 
 .todo-container {
     background-color: white;
     padding: 20px;
-    width: 350px;
+    width: 100%;
+    max-width: 390px;
+    height: fit-content;
     border-radius: 10px;
 }
 
@@ -20,9 +26,17 @@ h1 {
     text-align: center;
 }
 
+form {
+    display: flex;
+    gap: 8px;
+}
+
 input[type="text"] {
     padding: 10px;
-    width: 60%;
+    width: 100%;
+    min-width: 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
 button {
@@ -30,11 +44,14 @@ button {
     background-color: #704caf;
     color: white;
     border: none;
+    border-radius: 5px;
     cursor: pointer;
+    flex-shrink: 0;
 }
 
 ul {
     padding: 0;
+    margin: 0;
 }
 
 li {
@@ -45,9 +62,18 @@ li {
     margin-top: 15px;
 }
 
+li span {
+    overflow-wrap: anywhere;
+}
+
+li input[type="checkbox"] {
+    flex-shrink: 0;
+}
+
 .delete-btn {
     background-color: #e53935;
     margin-left: auto;
+    flex-shrink: 0;
 }
 
 .visually-hidden {
@@ -55,4 +81,20 @@ li {
     width: 1px;
     height: 1px;
     overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+}
+
+@media (max-width: 400px) {
+    .todo-container {
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    form button {
+        padding: 10px 8px;
+    }
 }
